@@ -8,9 +8,15 @@ import utilities.logSetup.ApplicationLogger;
 
 public class LoggingDriver extends DriverDecorator {
 	private static Logger logger = ApplicationLogger.getApplicationLogger();
+	private static LoggingDriver instance = new LoggingDriver(
+			new WebCoreDriver());
 
-	public LoggingDriver(Driver driver) {
+	private LoggingDriver(Driver driver) {
 		super(driver);
+	}
+
+	public static LoggingDriver getInstance() {
+		return instance;
 	}
 
 	@Override

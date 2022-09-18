@@ -50,6 +50,10 @@ public class WebCoreDriver extends Driver {
 		webDriver.manage().window().maximize();
 	}
 
+	public static WebDriver getWebDriver() {
+		return webDriver;
+	}
+
 	@Override
 	public void quit() {
 		if (webDriver != null)

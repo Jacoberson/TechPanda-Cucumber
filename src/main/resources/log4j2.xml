@@ -8,10 +8,7 @@
 		</File>
 	</Appenders>
 	<Loggers>
-		<Logger name="com.github.jacoberson" level="trace" additivity="false">
-			<AppenderRef ref="Logs" />
-		</Logger>
-		<Root level="error">
+		<Root level="trace">
 			<AppenderRef ref="Logs" />
 		</Root>
 	</Loggers>
