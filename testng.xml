@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="TechPanda-Cucumber Suite">
+	<test thread-count="5" name="TechPanda-Cucumber Tests">
+		<classes>
+			<class name="cucumberRunner.RunCucumber" />
+		</classes>
+	</test> <!-- TechPanda-Cucumber Tests -->
+</suite> <!-- TechPanda-Cucumber Suite -->
