@@ -1,5 +1,6 @@
 package steps;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import pages.actions.HomePageActions;
@@ -34,14 +35,24 @@ public class MobilePageSteps {
 		mobilePage.verifyFirstItem(firstItem);
 	}
 
-	@Then("the middle item is {string}")
+	@And("the middle item is {string}")
 	public void the_middle_item_is(String middleItem) {
 		mobilePage.verifyMiddleItem(middleItem);
 	}
 
-	@Then("the last item is {string}")
+	@And("the last item is {string}")
 	public void the_last_item_is(String lastItem) {
 		mobilePage.verifyLastItem(lastItem);
+	}
+
+	@Given("I open the details page for {string}")
+	public void i_open_the_details_page_for(String device) {
+		mobilePage.openDevicePage(device);
+	}
+
+	@Then("the {string} matches the price on the details page")
+	public void the_matches_the_price_on_the_details_page(String price) {
+		mobilePage.comparePrice(price);
 	}
 
 }

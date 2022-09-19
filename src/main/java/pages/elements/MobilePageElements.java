@@ -15,4 +15,20 @@ public class MobilePageElements {
 
 	@FindBy(how = How.CSS, using = ".product-name")
 	public List<WebElement> mobileProducts;
+
+	@FindBy(how = How.CSS, using = "h2 > a[href*='sony-xperia']")
+	public WebElement sonyXperiaLink;
+
+	@FindBy(how = How.CSS, using = "h2 > a[href*='iphone']")
+	public WebElement iPhoneLink;
+
+	@FindBy(how = How.CSS, using = "h2 > a[href*='samsung-galaxy']")
+	public WebElement samsungGalaxyLink;
+
+	@FindBy(how = How.CLASS_NAME, using = "price")
+	public WebElement detailsPagePriceRegular;
+
+	@FindBy(how = How.ID, using = "product-price-3")
+	public WebElement detailsPagePriceSpecial;
+
 }

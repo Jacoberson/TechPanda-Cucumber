@@ -49,4 +49,29 @@ public class MobilePageActions {
 
 		Assert.assertTrue(productNames.get(2).getText().equals(lastItem));
 	}
+
+	public void openDevicePage(String device) {
+		switch (device) {
+			case "SONY XPERIA" :
+				mobilePage.sonyXperiaLink.click();
+				break;
+			case "IPHONE" :
+				mobilePage.iPhoneLink.click();
+				break;
+			case "SAMSUNG GALAXY" :
+				mobilePage.samsungGalaxyLink.click();
+				break;
+		}
+	}
+
+	public void comparePrice(String price) {
+		if (price.contains("130.00")) {
+			Assert.assertEquals(mobilePage.detailsPagePriceSpecial.getText(),
+					price);
+		} else {
+			Assert.assertEquals(mobilePage.detailsPagePriceRegular.getText(),
+					price);
+		}
+
+	}
 }
