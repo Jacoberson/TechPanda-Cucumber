@@ -1,10 +1,18 @@
 package pages.elements;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
+import org.openqa.selenium.By;
+
+import utilities.driverManagement.Driver;
+import utilities.elementManagement.Element;
 
 public class HomePageElements {
-	@FindBy(how = How.XPATH, using = "//a[contains(text(), 'Mobile')]")
-	public WebElement mobileLink;
+	private Driver driver;
+
+	public HomePageElements(Driver driver) {
+		this.driver = driver;
+	}
+
+	public Element mobileLink() {
+		return driver.find(By.xpath("//a[contains(text(), 'Mobile')]"));
+	}
 }

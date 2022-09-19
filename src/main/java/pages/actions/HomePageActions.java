@@ -1,20 +1,19 @@
 package pages.actions;
 
-import org.openqa.selenium.support.PageFactory;
-
 import pages.elements.HomePageElements;
-import utilities.driverManagement.WebCoreDriver;
+import utilities.driverManagement.Driver;
+import utilities.driverManagement.LoggingDriver;
 
 public class HomePageActions {
-	public HomePageElements homePage = null;
+	private Driver driver = LoggingDriver.getInstance();
+	public HomePageElements homePage;
 
 	public HomePageActions() {
-		this.homePage = new HomePageElements();
-		PageFactory.initElements(WebCoreDriver.getWebDriver(), homePage);
+		this.homePage = new HomePageElements(driver);
 	}
 
 	public void goToMobilePage() {
-		homePage.mobileLink.click();
+		homePage.mobileLink().click();
 	}
 
 }

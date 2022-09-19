@@ -1,6 +1,11 @@
 package utilities.driverManagement;
 
 import java.io.File;
+import java.util.List;
+
+import org.openqa.selenium.By;
+
+import utilities.elementManagement.Element;
 
 public class DriverDecorator extends Driver {
 	protected final Driver driver;
@@ -37,6 +42,16 @@ public class DriverDecorator extends Driver {
 	@Override
 	public void openPage(String url) {
 		driver.openPage(url);
+	}
+
+	@Override
+	public Element find(By locator) {
+		return driver.find(locator);
+	}
+
+	@Override
+	public List<Element> findAll(By locator) {
+		return driver.findAll(locator);
 	}
 
 }

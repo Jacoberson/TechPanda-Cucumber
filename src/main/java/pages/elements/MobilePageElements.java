@@ -2,33 +2,41 @@ package pages.elements;
 
 import java.util.List;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
+import org.openqa.selenium.By;
+
+import utilities.driverManagement.Driver;
+import utilities.elementManagement.Element;
 
 public class MobilePageElements {
-	@FindBy(how = How.TAG_NAME, using = "h1")
-	public WebElement mobilePageHeader;
+	private Driver driver;
 
-	@FindBy(how = How.CSS, using = "[title='Sort By']")
-	public WebElement sortBy;
+	public MobilePageElements(Driver driver) {
+		this.driver = driver;
+	}
 
-	@FindBy(how = How.CSS, using = ".product-name")
-	public List<WebElement> mobileProducts;
+	public Element mobilePageHeader() {
+		return driver.find(By.tagName("h1"));
+	}
 
-	@FindBy(how = How.CSS, using = "h2 > a[href*='sony-xperia']")
-	public WebElement sonyXperiaLink;
+	public Element sortBy() {
+		return driver.find(By.cssSelector("[title='Sort By']"));
+	}
 
-	@FindBy(how = How.CSS, using = "h2 > a[href*='iphone']")
-	public WebElement iPhoneLink;
+	public List<Element> mobileProducts() {
+		return driver.findAll(By.cssSelector(".product-name"));
+	}
 
-	@FindBy(how = How.CSS, using = "h2 > a[href*='samsung-galaxy']")
-	public WebElement samsungGalaxyLink;
+	public Element mobileName(String deviceName) {
+		return driver.find(By
+				.cssSelector(String.format("h2 > a[href*='%s']", deviceName)));
+	}
 
-	@FindBy(how = How.CLASS_NAME, using = "price")
-	public WebElement detailsPagePriceRegular;
+	public Element detailsPagePriceRegular() {
+		return driver.find(By.className("price"));
+	}
 
-	@FindBy(how = How.ID, using = "product-price-3")
-	public WebElement detailsPagePriceSpecial;
+	public Element detailsPagePriceSpecial() {
+		return driver.find(By.id("product-price-3"));
+	}
 
 }
