@@ -62,13 +62,6 @@ public class MobilePageActions {
 	}
 
 	public void comparePrice(String price) {
-		if (price.contains("130.00")) {
-			Assert.assertEquals(mobilePage.detailsPagePriceSpecial().getText(),
-					price);
-		} else {
-			Assert.assertEquals(mobilePage.detailsPagePriceRegular().getText(),
-					price);
-		}
-
+		Assert.assertEquals(mobilePage.detailsPagePrice().getText(), price);
 	}
 }

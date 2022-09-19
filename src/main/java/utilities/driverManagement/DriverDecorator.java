@@ -3,9 +3,8 @@ package utilities.driverManagement;
 import java.io.File;
 import java.util.List;
 
-import org.openqa.selenium.By;
-
 import utilities.elementManagement.Element;
+import utilities.elementManagement.findStrategies.FindStrategy;
 
 public class DriverDecorator extends Driver {
 	protected final Driver driver;
@@ -45,13 +44,93 @@ public class DriverDecorator extends Driver {
 	}
 
 	@Override
-	public Element find(By locator) {
-		return driver.find(locator);
+	public Element find(FindStrategy findStrategy) {
+		return driver.find(findStrategy);
 	}
 
 	@Override
-	public List<Element> findAll(By locator) {
-		return driver.findAll(locator);
+	public List<Element> findAll(FindStrategy findStrategy) {
+		return driver.findAll(findStrategy);
+	}
+
+	@Override
+	public Element findById(String id) {
+		return driver.findById(id);
+	}
+
+	@Override
+	public Element findByClassName(String className) {
+		return driver.findByClassName(className);
+	}
+
+	@Override
+	public Element findByTagName(String tagName) {
+		return driver.findByTagName(tagName);
+	}
+
+	@Override
+	public Element findByCssSelector(String cssSelector) {
+		return driver.findByCssSelector(cssSelector);
+	}
+
+	@Override
+	public Element findByXpath(String xpath) {
+		return driver.findByXpath(xpath);
+	}
+
+	@Override
+	public Element findByText(String text) {
+		return driver.findByText(text);
+	}
+
+	@Override
+	public Element findByIdContaining(String id) {
+		return driver.findByIdContaining(id);
+	}
+
+	@Override
+	public Element findByUrlContaining(String containing) {
+		return driver.findByUrlContaining(containing);
+	}
+
+	@Override
+	public List<Element> findAllById(String id) {
+		return driver.findAllById(id);
+	}
+
+	@Override
+	public List<Element> findAllByClassName(String className) {
+		return driver.findAllByClassName(className);
+	}
+
+	@Override
+	public List<Element> findAllByTagName(String tagName) {
+		return driver.findAllByTagName(tagName);
+	}
+
+	@Override
+	public List<Element> findAllByCssSelector(String cssSelector) {
+		return driver.findAllByCssSelector(cssSelector);
+	}
+
+	@Override
+	public List<Element> findAllByXpath(String xpath) {
+		return driver.findAllByXpath(xpath);
+	}
+
+	@Override
+	public List<Element> findAllByText(String text) {
+		return driver.findAllByText(text);
+	}
+
+	@Override
+	public List<Element> findAllByIdContaining(String id) {
+		return driver.findAllByIdContaining(id);
+	}
+
+	@Override
+	public List<Element> findAllByUrlContaining(String containing) {
+		return driver.findAllByUrlContaining(containing);
 	}
 
 }

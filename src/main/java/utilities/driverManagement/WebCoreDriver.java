@@ -8,7 +8,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.logging.log4j.core.util.NullOutputStream;
-import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -27,6 +26,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.elementManagement.Element;
 import utilities.elementManagement.LoggingElement;
 import utilities.elementManagement.WebCoreElement;
+import utilities.elementManagement.findStrategies.ClassNameFindStrategy;
+import utilities.elementManagement.findStrategies.CssSelectorFindStrategy;
+import utilities.elementManagement.findStrategies.FindStrategy;
+import utilities.elementManagement.findStrategies.IdContainingFindStrategy;
+import utilities.elementManagement.findStrategies.IdFindStrategy;
+import utilities.elementManagement.findStrategies.TagNameFindStrategy;
+import utilities.elementManagement.findStrategies.TextContainingFindStrategy;
+import utilities.elementManagement.findStrategies.UrlContainingFindStrategy;
+import utilities.elementManagement.findStrategies.XpathFindStrategy;
 
 public class WebCoreDriver extends Driver {
 	private static WebDriver webDriver;
@@ -135,29 +143,111 @@ public class WebCoreDriver extends Driver {
 	}
 
 	@Override
-	public Element find(By locator) {
-		var nativeWebElement = wait
-				.until(ExpectedConditions.presenceOfElementLocated(locator));
-		Element element = new WebCoreElement(nativeWebElement, locator);
+	public Element find(FindStrategy findStrategy) {
+		var nativeWebElement = wait.until(ExpectedConditions
+				.presenceOfElementLocated(findStrategy.convertToBy()));
+		Element element = new WebCoreElement(nativeWebElement,
+				findStrategy.convertToBy());
 		Element logElement = new LoggingElement(element);
 
 		return logElement;
 	}
 
 	@Override
-	public List<Element> findAll(By locator) {
-		var nativeWebElements = wait.until(
-				ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+	public List<Element> findAll(FindStrategy findStrategy) {
+		var nativeWebElements = wait.until(ExpectedConditions
+				.presenceOfAllElementsLocatedBy(findStrategy.convertToBy()));
 		List<Element> elements = new ArrayList<>();
 
 		for (var nativeWebElement : nativeWebElements) {
-			Element element = new WebCoreElement(nativeWebElement, locator);
+			Element element = new WebCoreElement(nativeWebElement,
+					findStrategy.convertToBy());
 			Element logElement = new LoggingElement(element);
 
 			elements.add(logElement);
 		}
 
 		return elements;
+	}
+
+	@Override
+	public Element findById(String id) {
+		return find(new IdFindStrategy(id));
+	}
+
+	@Override
+	public Element findByClassName(String className) {
+		return find(new ClassNameFindStrategy(className));
+	}
+
+	@Override
+	public Element findByTagName(String tagName) {
+		return find(new TagNameFindStrategy(tagName));
+	}
+
+	@Override
+	public Element findByCssSelector(String cssSelector) {
+		return find(new CssSelectorFindStrategy(cssSelector));
+	}
+
+	@Override
+	public Element findByXpath(String xpath) {
+		return find(new XpathFindStrategy(xpath));
+	}
+
+	@Override
+	public Element findByText(String text) {
+		return find(new TextContainingFindStrategy(text));
+	}
+
+	@Override
+	public Element findByIdContaining(String containing) {
+		return find(new IdContainingFindStrategy(containing));
+	}
+
+	@Override
+	public Element findByUrlContaining(String containing) {
+		return find(new UrlContainingFindStrategy(containing));
+	}
+
+	@Override
+	public List<Element> findAllById(String id) {
+		return findAll(new IdFindStrategy(id));
+	}
+
+	@Override
+	public List<Element> findAllByClassName(String className) {
+		return findAll(new ClassNameFindStrategy(className));
+	}
+
+	@Override
+	public List<Element> findAllByTagName(String tagName) {
+		return findAll(new TagNameFindStrategy(tagName));
+	}
+
+	@Override
+	public List<Element> findAllByCssSelector(String cssSelector) {
+		return findAll(new CssSelectorFindStrategy(cssSelector));
+	}
+
+	@Override
+	public List<Element> findAllByXpath(String xpath) {
+		return findAll(new XpathFindStrategy(xpath));
+	}
+
+	@Override
+	public List<Element> findAllByText(String text) {
+		return findAll(new TextContainingFindStrategy(text));
+	}
+
+	@Override
+	public List<Element> findAllByIdContaining(String containing) {
+		return findAll(new IdContainingFindStrategy(containing));
+	}
+
+	@Override
+	public List<Element> findAllByUrlContaining(String containing) {
+		return findAll(new UrlContainingFindStrategy(containing));
 	}
 
 }

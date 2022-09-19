@@ -1,7 +1,5 @@
 package pages.elements;
 
-import org.openqa.selenium.By;
-
 import utilities.driverManagement.Driver;
 import utilities.elementManagement.Element;
 
@@ -13,6 +11,6 @@ public class HomePageElements {
 	}
 
 	public Element mobileLink() {
-		return driver.find(By.xpath("//a[contains(text(), 'Mobile')]"));
+		return driver.findByText("Mobile");
 	}
 }
