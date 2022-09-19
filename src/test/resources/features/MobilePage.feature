@@ -12,9 +12,7 @@ Feature: Mobile Page
   @Mobile-Sort
   Scenario Outline: Sort Items on Mobile Page
     Given I sort the items by <sortBy>
-    Then the first item is <firstItem>
-    And the middle item is <middleItem>
-    And the last item is <lastItem>
+    Then the item order is <firstItem>, <middleItem>, <lastItem>
 
     Examples: 
       | sortBy     | firstItem     | middleItem       | lastItem         |

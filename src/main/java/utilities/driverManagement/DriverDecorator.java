@@ -3,6 +3,8 @@ package utilities.driverManagement;
 import java.io.File;
 import java.util.List;
 
+import org.openqa.selenium.support.ui.Select;
+
 import utilities.elementManagement.Element;
 import utilities.elementManagement.findStrategies.FindStrategy;
 
@@ -131,6 +133,11 @@ public class DriverDecorator extends Driver {
 	@Override
 	public List<Element> findAllByUrlContaining(String containing) {
 		return driver.findAllByUrlContaining(containing);
+	}
+
+	@Override
+	public Select findSelectByCss(String css) {
+		return driver.findSelectByCss(css);
 	}
 
 }

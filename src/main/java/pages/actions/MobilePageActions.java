@@ -2,8 +2,6 @@ package pages.actions;
 
 import java.util.List;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import pages.elements.MobilePageElements;
@@ -29,26 +27,18 @@ public class MobilePageActions {
 	}
 
 	public void sortBy(String sortBy) {
-		new Select((WebElement) mobilePage.sortBy())
-				.selectByVisibleText(sortBy);
+		mobilePage.sortBy().selectByVisibleText(sortBy);
 	}
 
-	public void verifyFirstItem(String firstItem) {
+	public void verifyItemOrder(String item1, String item2, String item3) {
+		String[] items = {item1, item2, item3};
 		List<Element> productNames = mobilePage.mobileProducts();
 
-		Assert.assertTrue(productNames.get(0).getText().equals(firstItem));
-	}
-
-	public void verifyMiddleItem(String middleItem) {
-		List<Element> productNames = mobilePage.mobileProducts();
-
-		Assert.assertTrue(productNames.get(1).getText().equals(middleItem));
-	}
-
-	public void verifyLastItem(String lastItem) {
-		List<Element> productNames = mobilePage.mobileProducts();
-
-		Assert.assertTrue(productNames.get(2).getText().equals(lastItem));
+		for (int i = 0; i < productNames.size(); i++) {
+			String itemToCompare = items[i];
+			Assert.assertTrue(
+					productNames.get(i).getText().equals(itemToCompare));
+		}
 	}
 
 	public void openDevicePage(String device) {

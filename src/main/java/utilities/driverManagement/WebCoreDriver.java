@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.logging.log4j.core.util.NullOutputStream;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +22,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.service.DriverService;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utilities.elementManagement.Element;
@@ -248,6 +250,11 @@ public class WebCoreDriver extends Driver {
 	@Override
 	public List<Element> findAllByUrlContaining(String containing) {
 		return findAll(new UrlContainingFindStrategy(containing));
+	}
+
+	@Override
+	public Select findSelectByCss(String css) {
+		return new Select(webDriver.findElement(By.cssSelector(css)));
 	}
 
 }

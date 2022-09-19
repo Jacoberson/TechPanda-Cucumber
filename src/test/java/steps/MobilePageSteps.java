@@ -1,8 +1,5 @@
 package steps;
 
-import org.testng.SkipException;
-
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import pages.actions.HomePageActions;
@@ -29,26 +26,13 @@ public class MobilePageSteps {
 
 	@Given("I sort the items by {string}")
 	public void i_sort_the_items_by(String sortBy) {
-		throw new SkipException("fix sort by");
-		// mobilePage.sortBy(sortBy);
+		mobilePage.sortBy(sortBy);
 	}
 
-	@Then("the first item is {string}")
-	public void the_first_item_is(String firstItem) {
-		// mobilePage.verifyFirstItem(firstItem);
-		throw new SkipException("fix sort by");
-	}
-
-	@And("the middle item is {string}")
-	public void the_middle_item_is(String middleItem) {
-		// mobilePage.verifyMiddleItem(middleItem);
-		throw new SkipException("fix sort by");
-	}
-
-	@And("the last item is {string}")
-	public void the_last_item_is(String lastItem) {
-		// mobilePage.verifyLastItem(lastItem);
-		throw new SkipException("fix sort by");
+	@Then("the item order is {string}, {string}, {string}")
+	public void the_item_order_is(String firstItem, String middleItem,
+			String lastItem) {
+		mobilePage.verifyItemOrder(firstItem, middleItem, lastItem);
 	}
 
 	@Given("I open the details page for {string}")

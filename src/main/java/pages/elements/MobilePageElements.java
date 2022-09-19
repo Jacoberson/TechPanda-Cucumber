@@ -2,6 +2,8 @@ package pages.elements;
 
 import java.util.List;
 
+import org.openqa.selenium.support.ui.Select;
+
 import utilities.driverManagement.Driver;
 import utilities.elementManagement.Element;
 
@@ -16,8 +18,8 @@ public class MobilePageElements {
 		return driver.findByTagName("h1");
 	}
 
-	public Element sortBy() {
-		return driver.findByCssSelector("[title='Sort By']");
+	public Select sortBy() {
+		return driver.findSelectByCss("[title='Sort By']");
 	}
 
 	public List<Element> mobileProducts() {

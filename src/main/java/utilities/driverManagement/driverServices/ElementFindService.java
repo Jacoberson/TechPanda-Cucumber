@@ -2,6 +2,8 @@ package utilities.driverManagement.driverServices;
 
 import java.util.List;
 
+import org.openqa.selenium.support.ui.Select;
+
 import utilities.elementManagement.Element;
 import utilities.elementManagement.findStrategies.FindStrategy;
 
@@ -14,6 +16,7 @@ public interface ElementFindService {
 	public abstract Element findByText(String text);
 	public abstract Element findByIdContaining(String containing);
 	public abstract Element findByUrlContaining(String containing);
+	public abstract Select findSelectByCss(String css);
 	public abstract List<Element> findAllById(String id);
 	public abstract List<Element> findAllByClassName(String className);
 	public abstract List<Element> findAllByTagName(String tagName);
