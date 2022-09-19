@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.apache.commons.io.output.NullOutputStream;
+import org.apache.logging.log4j.core.util.NullOutputStream;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
