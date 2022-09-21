@@ -6,7 +6,7 @@ import pages.actions.CartPageActions;
 import pages.actions.HomePageActions;
 import pages.actions.MobilePageActions;
 
-public class CartPageSteps {
+public class CartPageSteps extends BaseSteps {
 	HomePageActions homePage = new HomePageActions();
 	MobilePageActions mobilePage = new MobilePageActions();
 	CartPageActions cartPage = new CartPageActions();
@@ -24,7 +24,9 @@ public class CartPageSteps {
 
 	@Then("I get an error message")
 	public void i_get_an_error_message() {
-		cartPage.verifyQuantityErrorMessage();
+		String expectedError = config.properties.getProperty("quantityError");
+
+		cartPage.verifyQuantityErrorMessage(expectedError);
 	}
 
 	@Given("I click the empty cart button")
@@ -34,7 +36,10 @@ public class CartPageSteps {
 
 	@Then("my shopping cart is empty")
 	public void my_shopping_cart_is_empty() {
-		cartPage.verifyEmptyCart();
+		String expectedMessage = config.properties
+				.getProperty("emptyCartMessage");
+
+		cartPage.verifyEmptyCart(expectedMessage);
 	}
 
 }

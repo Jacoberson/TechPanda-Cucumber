@@ -3,11 +3,9 @@ package steps;
 import io.cucumber.java.Before;
 import utilities.driverManagement.Driver;
 import utilities.driverManagement.LoggingDriver;
-import utilities.fileReaders.ConfigFileReader;
 
-public class BeforeSteps {
+public class BeforeSteps extends BaseSteps {
 	private static Driver driver = LoggingDriver.getInstance();
-	protected ConfigFileReader config = new ConfigFileReader();
 
 	@Before
 	public void setUp() {

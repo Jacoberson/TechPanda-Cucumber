@@ -1,11 +1,8 @@
 package pages.actions;
 
 import pages.elements.HomePageElements;
-import utilities.driverManagement.Driver;
-import utilities.driverManagement.LoggingDriver;
 
-public class HomePageActions {
-	private Driver driver = LoggingDriver.getInstance();
+public class HomePageActions extends BaseActions {
 	public HomePageElements homePage;
 
 	public HomePageActions() {

@@ -3,13 +3,8 @@ package pages.actions;
 import org.testng.Assert;
 
 import pages.elements.CartPageElements;
-import utilities.driverManagement.Driver;
-import utilities.driverManagement.LoggingDriver;
-import utilities.fileReaders.ConfigFileReader;
 
-public class CartPageActions {
-	private ConfigFileReader config = new ConfigFileReader();
-	private Driver driver = LoggingDriver.getInstance();
+public class CartPageActions extends BaseActions {
 	public CartPageElements cartPage;
 
 	public CartPageActions() {
@@ -21,8 +16,7 @@ public class CartPageActions {
 		cartPage.updateButton().click();
 	}
 
-	public void verifyQuantityErrorMessage() {
-		String expectedError = config.properties.getProperty("quantityError");
+	public void verifyQuantityErrorMessage(String expectedError) {
 		String actualError = cartPage.quantityError().getText();
 
 		Assert.assertEquals(expectedError, actualError);
@@ -33,9 +27,7 @@ public class CartPageActions {
 
 	}
 
-	public void verifyEmptyCart() {
-		String expectedMessage = config.properties
-				.getProperty("emptyCartMessage");
+	public void verifyEmptyCart(String expectedMessage) {
 		String actualMessage = cartPage.emptyCartMessage().getText();
 
 		Assert.assertTrue(actualMessage.contains(expectedMessage));

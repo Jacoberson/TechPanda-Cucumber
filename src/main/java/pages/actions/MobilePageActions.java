@@ -5,12 +5,9 @@ import java.util.List;
 import org.testng.Assert;
 
 import pages.elements.MobilePageElements;
-import utilities.driverManagement.Driver;
-import utilities.driverManagement.LoggingDriver;
 import utilities.elementManagement.Element;
 
-public class MobilePageActions {
-	private Driver driver = LoggingDriver.getInstance();
+public class MobilePageActions extends BaseActions {
 	public MobilePageElements mobilePage;
 
 	public MobilePageActions() {
@@ -45,17 +42,17 @@ public class MobilePageActions {
 		mobilePage.mobileName(formatDeviceName(device)).click();
 	}
 
-	private String formatDeviceName(String device) {
-		String formattedDeviceName = device.toLowerCase().replace(" ", "-");
-
-		return formattedDeviceName;
-	}
-
 	public void comparePrice(String price) {
 		Assert.assertEquals(mobilePage.detailsPagePrice().getText(), price);
 	}
 
 	public void addDeviceToCart(String device) {
 		mobilePage.addToCartButton(formatDeviceName(device)).click();
+	}
+
+	private String formatDeviceName(String device) {
+		String formattedDeviceName = device.toLowerCase().replace(" ", "-");
+
+		return formattedDeviceName;
 	}
 }

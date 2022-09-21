@@ -5,7 +5,7 @@ import io.cucumber.java.en.Then;
 import pages.actions.HomePageActions;
 import pages.actions.MobilePageActions;
 
-public class MobilePageSteps {
+public class MobilePageSteps extends BaseSteps {
 	HomePageActions homePage = new HomePageActions();
 	MobilePageActions mobilePage = new MobilePageActions();
 
