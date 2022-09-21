@@ -27,9 +27,4 @@ public class WebCoreElement extends Element {
 		webElement.click();
 	}
 
-	@Override
-	public WebElement getWebElement() {
-		return webElement;
-	}
-
 }

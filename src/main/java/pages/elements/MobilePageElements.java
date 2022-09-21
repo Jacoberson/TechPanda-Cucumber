@@ -19,9 +19,7 @@ public class MobilePageElements {
 	}
 
 	public Select sortBy() {
-		var element = driver.findByCssSelector("[title='Sort By']");
-
-		return new Select(element.getWebElement());
+		return driver.findSelectByCss("[title='Sort By']");
 	}
 
 	public List<Element> mobileProducts() {
