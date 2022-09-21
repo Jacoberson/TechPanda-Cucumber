@@ -54,4 +54,8 @@ public class MobilePageActions {
 	public void comparePrice(String price) {
 		Assert.assertEquals(mobilePage.detailsPagePrice().getText(), price);
 	}
+
+	public void addDeviceToCart(String device) {
+		mobilePage.addToCartButton(formatDeviceName(device)).click();
+	}
 }

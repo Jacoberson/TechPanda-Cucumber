@@ -8,4 +8,5 @@ public abstract class Element {
 	public abstract WebElement getWebElement();
 	public abstract String getText();
 	public abstract void click();
+	public abstract void typeText(String text);
 }

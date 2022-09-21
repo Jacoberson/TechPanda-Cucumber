@@ -30,4 +30,9 @@ public class ElementDecorator extends Element {
 		return element.getWebElement();
 	}
 
+	@Override
+	public void typeText(String text) {
+		element.typeText(text);
+	}
+
 }

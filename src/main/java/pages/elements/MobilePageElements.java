@@ -34,7 +34,12 @@ public class MobilePageElements {
 
 	public Element detailsPagePrice() {
 		return driver.findByIdContaining("product-price");
+	}
 
+	public Element addToCartButton(String deviceName) {
+		return driver.findByCssSelector(String.format(
+				"li > a[href*='%s'] + div > div[class='actions'] > button",
+				deviceName));
 	}
 
 }

@@ -32,4 +32,10 @@ public class WebCoreElement extends Element {
 		return webElement;
 	}
 
+	@Override
+	public void typeText(String text) {
+		webElement.clear();
+		webElement.sendKeys(text);
+	}
+
 }

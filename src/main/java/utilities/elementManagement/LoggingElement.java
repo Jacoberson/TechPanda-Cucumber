@@ -30,4 +30,10 @@ public class LoggingElement extends ElementDecorator {
 		element.click();
 	}
 
+	@Override
+	public void typeText(String text) {
+		logger.info(String.format("typing '%s'", text));
+		element.typeText(text);
+	}
+
 }
