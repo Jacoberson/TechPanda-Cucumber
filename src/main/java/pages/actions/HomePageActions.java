@@ -3,14 +3,14 @@ package pages.actions;
 import pages.elements.HomePageElements;
 
 public class HomePageActions extends BaseActions {
-	public HomePageElements homePage;
+	private HomePageElements elements;
 
 	public HomePageActions() {
-		this.homePage = new HomePageElements(driver);
+		this.elements = new HomePageElements(driver);
 	}
 
 	public void goToMobilePage() {
-		homePage.mobileLink().click();
+		elements.mobileLink().click();
 	}
 
 }

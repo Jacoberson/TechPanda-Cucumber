@@ -8,15 +8,14 @@ import pages.elements.MobilePageElements;
 import utilities.elementManagement.Element;
 
 public class MobilePageActions extends BaseActions {
-	public MobilePageElements mobilePage;
+	private MobilePageElements elements;
 
 	public MobilePageActions() {
-		this.mobilePage = new MobilePageElements(driver);
+		this.elements = new MobilePageElements(driver);
 	}
 
 	public void verifyOnMobilePage(String header) {
-		Assert.assertTrue(
-				mobilePage.mobilePageHeader().getText().equals(header));
+		Assert.assertTrue(elements.mobilePageHeader().getText().equals(header));
 	}
 
 	public void verifyMobilePageTitle(String title) {
@@ -24,12 +23,12 @@ public class MobilePageActions extends BaseActions {
 	}
 
 	public void sortBy(String sortBy) {
-		mobilePage.sortBy().selectByVisibleText(sortBy);
+		elements.sortBy().selectByVisibleText(sortBy);
 	}
 
 	public void verifyItemOrder(String item1, String item2, String item3) {
 		String[] items = {item1, item2, item3};
-		List<Element> productNames = mobilePage.mobileProducts();
+		List<Element> productNames = elements.mobileProducts();
 
 		for (int i = 0; i < productNames.size(); i++) {
 			String itemToCompare = items[i];
@@ -39,15 +38,15 @@ public class MobilePageActions extends BaseActions {
 	}
 
 	public void openDevicePage(String device) {
-		mobilePage.mobileName(formatDeviceName(device)).click();
+		elements.mobileName(formatDeviceName(device)).click();
 	}
 
 	public void comparePrice(String price) {
-		Assert.assertEquals(mobilePage.detailsPagePrice().getText(), price);
+		Assert.assertEquals(elements.detailsPagePrice().getText(), price);
 	}
 
 	public void addDeviceToCart(String device) {
-		mobilePage.addToCartButton(formatDeviceName(device)).click();
+		elements.addToCartButton(formatDeviceName(device)).click();
 	}
 
 	private String formatDeviceName(String device) {
