@@ -45,4 +45,19 @@ public class MobilePageSteps extends BaseSteps {
 		mobilePage.comparePrice(price);
 	}
 
+	@Given("I select to compare {string} and {string}")
+	public void i_select_to_compare_and(String device1, String device2) {
+		mobilePage.compareDevices(device1, device2);
+	}
+
+	@Then("a popup window displays that has a heading of {string}")
+	public void a_popup_window_displays_that_has_a_heading_of(String header) {
+		mobilePage.verifyComparePopup(header);
+	}
+
+	@Then("the popup window displays {string} and {string}")
+	public void the_popup_window_displays_and(String device1, String device2) {
+		mobilePage.verifyComparedDevices(device1, device2);
+	}
+
 }

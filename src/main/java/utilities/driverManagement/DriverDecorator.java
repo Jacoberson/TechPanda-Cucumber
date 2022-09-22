@@ -133,4 +133,19 @@ public class DriverDecorator extends Driver {
 		return driver.findAllByUrlContaining(containing);
 	}
 
+	@Override
+	public String getCurrentWindow() {
+		return driver.getCurrentWindow();
+	}
+
+	@Override
+	public List<String> getAllWindows() {
+		return driver.getAllWindows();
+	}
+
+	@Override
+	public void switchWindow(String window) {
+		driver.switchWindow(window);
+	}
+
 }

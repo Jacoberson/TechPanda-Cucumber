@@ -1,6 +1,7 @@
 package utilities.driverManagement;
 
 import java.io.File;
+import java.util.List;
 
 import org.apache.logging.log4j.Logger;
 
@@ -53,6 +54,29 @@ public class LoggingDriver extends DriverDecorator {
 	public void openPage(String url) {
 		logger.trace(String.format("Opening url %s", url));
 		driver.openPage(url);
+	}
+
+	@Override
+	public String getCurrentWindow() {
+		logger.trace(String.format("current window is %s",
+				driver.getCurrentWindow()));
+
+		return driver.getCurrentWindow();
+	}
+
+	@Override
+	public List<String> getAllWindows() {
+		for (var window : driver.getAllWindows()) {
+			logger.trace(String.format("window: %s", window));
+		}
+
+		return driver.getAllWindows();
+	}
+
+	@Override
+	public void switchWindow(String window) {
+		logger.trace("switching windows");
+		driver.switchWindow(window);
 	}
 
 }

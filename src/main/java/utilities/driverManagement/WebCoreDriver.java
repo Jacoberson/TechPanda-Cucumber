@@ -250,4 +250,22 @@ public class WebCoreDriver extends Driver {
 		return findAll(new UrlContainingFindStrategy(containing));
 	}
 
+	@Override
+	public String getCurrentWindow() {
+		return webDriver.getWindowHandle();
+	}
+
+	@Override
+	public List<String> getAllWindows() {
+		ArrayList<String> windows = new ArrayList<>(
+				webDriver.getWindowHandles());
+
+		return windows;
+	}
+
+	@Override
+	public void switchWindow(String window) {
+		webDriver.switchTo().window(window);
+	}
+
 }

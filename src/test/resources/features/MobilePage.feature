@@ -30,3 +30,9 @@ Feature: Mobile Page
       | "SONY XPERIA"    | "$100.00"       |
       | "IPHONE"         | "$500.00"       |
       | "SAMSUNG GALAXY" | "$130.00"       |
+
+  @Mobile-Compare
+  Scenario: Compare devices
+    Given I select to compare "Sony Xperia" and "iPhone"
+    Then a popup window displays that has a heading of "COMPARE PRODUCTS"
+    And the popup window displays "Sony Xperia" and "IPhone"

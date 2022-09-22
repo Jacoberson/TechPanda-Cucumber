@@ -14,6 +14,12 @@ public class MobilePageActions extends BaseActions {
 		this.elements = new MobilePageElements(driver);
 	}
 
+	private String formatDeviceName(String device) {
+		String formattedDeviceName = device.toLowerCase().replace(" ", "-");
+
+		return formattedDeviceName;
+	}
+
 	public void verifyOnMobilePage(String header) {
 		Assert.assertTrue(elements.mobilePageHeader().getText().equals(header));
 	}
@@ -49,9 +55,34 @@ public class MobilePageActions extends BaseActions {
 		elements.addToCartButton(formatDeviceName(device)).click();
 	}
 
-	private String formatDeviceName(String device) {
-		String formattedDeviceName = device.toLowerCase().replace(" ", "-");
+	public void compareDevices(String device1, String device2) {
+		String formattedDeviceName1 = formatDeviceName(device1);
+		String formattedDeviceName2 = formatDeviceName(device2);
 
-		return formattedDeviceName;
+		elements.addToCompareLink(formattedDeviceName1).click();
+		elements.addToCompareLink(formattedDeviceName2).click();
+		elements.compareButton().click();
+	}
+
+	public void verifyComparePopup(String header) {
+		List<String> windows = driver.getAllWindows();
+
+		for (var window : windows) {
+			if (!driver.getCurrentWindow().equals(window)) {
+				driver.switchWindow(window);
+				break;
+			}
+		}
+
+		Assert.assertTrue(
+				elements.compareProductsHeader().getText().equals(header));
+	}
+
+	public void verifyComparedDevices(String device1, String device2) {
+		String displayedDevice1 = elements.comparedDevice(device1).getText();
+		String displayedDevice2 = elements.comparedDevice(device2).getText();
+
+		Assert.assertEquals(device1.toUpperCase(), displayedDevice1);
+		Assert.assertEquals(device2.toUpperCase(), displayedDevice2);
 	}
 }

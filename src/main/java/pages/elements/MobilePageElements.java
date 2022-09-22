@@ -37,9 +37,35 @@ public class MobilePageElements {
 	}
 
 	public Element addToCartButton(String deviceName) {
-		return driver.findByCssSelector(String.format(
-				"li > a[href*='%s'] + div > div[class='actions'] > button",
-				deviceName));
+		String phoneActionsDiv = getActionsDivForDevice(deviceName);
+
+		return driver.findByCssSelector(
+				String.format("%s > button", phoneActionsDiv));
+	}
+
+	public Element addToCompareLink(String deviceName) {
+		String phoneActionsDiv = getActionsDivForDevice(deviceName);
+
+		return driver.findByCssSelector(String
+				.format("%s > ul > li:nth-child(2) > a", phoneActionsDiv));
+	}
+
+	public Element compareButton() {
+		return driver.findByCssSelector("[title='Compare']");
+	}
+
+	public Element compareProductsHeader() {
+		return driver.findByCssSelector(".page-title > h1");
+	}
+
+	public Element comparedDevice(String deviceName) {
+		return driver.findByCssSelector(
+				String.format("h2 > a[title='%s']", deviceName));
+	}
+
+	private String getActionsDivForDevice(String deviceName) {
+		return String.format("li > a[href*='%s'] + div > div[class='actions']",
+				deviceName);
 	}
 
 }
